@@ -1,1 +1,6 @@
-# Calcul_Parallele
+# Calcul Parallèle
+
+Author:
+Dardenne Gregory
+Jacquot Thierry
+Collin Alex
