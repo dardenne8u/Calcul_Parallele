@@ -11,6 +11,8 @@ public class Distributeur {
     List<Image> images;
     List<ServiceCalcul> clients;
 
+    int i = 0;
+
     public Distributeur(){
         this.clients = new ArrayList<>();
         this.images = new ArrayList<>();
@@ -20,9 +22,9 @@ public class Distributeur {
         this.clients.add(client);
     }
 
-    public void compute(int x0, int y0, int l, int h) throws RemoteException {
-        for(ServiceCalcul client : this.clients){
-            client.compute(x0, y0, l, h);
-        }
+    public ServiceCalcul getClient(){
+        ServiceCalcul res = this.clients.get(i);
+        i = (i < this.clients.size()-1) ? i+1 : 0;
+        return res;
     }
 }
