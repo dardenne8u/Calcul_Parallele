@@ -18,11 +18,11 @@ public class Distributeur {
         this.images = new ArrayList<>();
     }
 
-    public void enregistrerClient(ServiceCalcul client) throws Exception{
+    public void enregistrerNoeud(ServiceCalcul client) throws Exception{
         this.clients.add(client);
     }
 
-    public ServiceCalcul getClient(){
+    public ServiceCalcul getNoeud(){
         ServiceCalcul res = this.clients.get(i);
         i = (i < this.clients.size()-1) ? i+1 : 0;
         return res;
