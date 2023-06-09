@@ -77,7 +77,11 @@ public class LancerRaytracer {
         Instant fin = Instant.now();
         long duree = Duration.between(debut, fin).toMillis();
         System.out.println("Temps d'affichage de 'image : " + duree);
+
+        serviceDistributeur.exitPrograms();
     }
+
+
     private static class ThreadImg extends Thread {
         private final Disp disp;
         private final int x, y, largeur, hauteur;
