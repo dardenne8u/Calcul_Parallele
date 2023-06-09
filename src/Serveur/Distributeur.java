@@ -19,7 +19,7 @@ public class Distributeur implements ServiceDistributeur{
         this.processus = new ArrayList<>();
         for(int j = 224; j<247; i++) {
             String[] cmd = new String[2];
-            cmd[0] = "lancerNoeud.sh";
+            cmd[0] = "../lancerNoeud.sh";
             cmd[1] = String.valueOf(j);
             this.processus.add(Runtime.getRuntime().exec(cmd));
         }
