@@ -2,29 +2,26 @@ package Serveur;
 
 import raytracer.Image;
 
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Distributeur implements ServiceDistributeur{
 
-    List<Image> images;
-    List<ServiceCalcul> clients;
+    List<ServiceCalcul> noeuds;
 
     int i = 0;
 
     public Distributeur(){
-        this.clients = new ArrayList<>();
-        this.images = new ArrayList<>();
+        this.noeuds = new ArrayList<>();
     }
 
     public void enregistrerNoeud(ServiceCalcul client) throws Exception{
-        this.clients.add(client);
+        this.noeuds.add(client);
     }
 
     public ServiceCalcul getNoeud(){
-        ServiceCalcul res = this.clients.get(i);
-        i = (i < this.clients.size()-1) ? i+1 : 0;
+        ServiceCalcul res = this.noeuds.get(i);
+        i = (i < this.noeuds.size()-1) ? i+1 : 0;
         return res;
     }
 }
