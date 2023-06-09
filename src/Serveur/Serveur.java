@@ -21,7 +21,7 @@ public class Serveur {
         ServiceDistributeur distributeur = null;
         try {
             distributeur = (ServiceDistributeur) UnicastRemoteObject.exportObject(new Distributeur(), port);
-        } catch (RemoteException e) {
+        } catch (Exception e) {
             System.out.println("Erreur : " + e.getMessage());
             System.exit(1);
         }

@@ -2,6 +2,7 @@ package Serveur;
 
 import raytracer.Image;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +13,14 @@ public class Distributeur implements ServiceDistributeur{
 
     int i = 0;
 
-    public Distributeur(){
+    public Distributeur() throws IOException{
         this.noeuds = new ArrayList<>();
+        for(int j = 224; j<247; i++) {
+            String[] cmd = new String[2];
+            cmd[0] = "lancerNoeud.sh";
+            cmd[1] = String.valueOf(j);
+            Runtime.getRuntime().exec(cmd);
+        }
     }
 
     public void enregistrerNoeud(ServiceCalcul client) throws RemoteException {
