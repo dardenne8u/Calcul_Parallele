@@ -6,7 +6,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Distributeur {
+public class Distributeur implements ServiceDistributeur{
 
     List<Image> images;
     List<ServiceCalcul> clients;
