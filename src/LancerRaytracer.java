@@ -64,17 +64,46 @@ public class LancerRaytracer {
         Instant debut = Instant.now();
         for (int i = 0; i < nbDivisions; i++) {
             for (int j = 0; j < nbDivisions; j++) {
-                try {
-                    Image img = serviceDistributeur.getNoeud().compute(i * largeur / nbDivisions, j * hauteur / nbDivisions, largeur / nbDivisions, hauteur / nbDivisions);
-                    disp.setImage(img, i * largeur / nbDivisions, j * hauteur / nbDivisions);
-                } catch (RemoteException e) {
-                    System.out.println("Erreur (compute)" + e.getMessage());
-                    System.exit(1);
-                }
+                new ThreadImg(
+                        i * largeur / nbDivisions,
+                        j * hauteur / nbDivisions,
+                        largeur / nbDivisions,
+                        hauteur / nbDivisions,
+                        serviceDistributeur,
+                        disp
+                ).start();
             }
         }
         Instant fin = Instant.now();
         long duree = Duration.between(debut, fin).toMillis();
         System.out.println("Temps d'affichage de 'image : " + duree);
     }
+    private static class ThreadImg extends Thread {
+        private final Disp disp;
+        private final int x, y, largeur, hauteur;
+        private final ServiceDistributeur calculateur;
+
+        public ThreadImg(int x, int y, int largeur, int hauteur, ServiceDistributeur calculateur, Disp disp) {
+            this.x = x;
+            this.y = y;
+            this.largeur = largeur;
+            this.hauteur = hauteur;
+            this.calculateur = calculateur;
+            this.disp = disp;
+        }
+
+        @Override
+        public void run() {
+            try {
+                Image img = calculateur.getNoeud().compute(x, y, largeur, hauteur);
+                disp.setImage(img, x, y);
+            } catch (RemoteException e) {
+                System.out.println("Erreur (compute)" + e.getMessage());
+                System.exit(1);
+            }
+        }
+    }
+
 }
+
+
