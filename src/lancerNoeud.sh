@@ -1,3 +1,3 @@
 #!/bin/bash
 
-ssh 100.64.80.$0 "cd Serveur && java LancerNoeud 100.64.80.237 1099 &"
+ssh 100.64.80."$0" "scp -r ../src \$(whoami)@100.64.80.$0:/var/tmp && cd /var/tmp/src/Serveur && java LancerNoeud 100.64.80."$1" 1099 &"

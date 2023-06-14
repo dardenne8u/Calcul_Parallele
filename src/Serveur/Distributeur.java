@@ -3,6 +3,7 @@ package Serveur;
 import raytracer.Image;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,8 @@ public class Distributeur implements ServiceDistributeur{
             String[] cmd = new String[2];
             cmd[0] = "../lancerNoeud.sh";
             cmd[1] = String.valueOf(j);
+            cmd[2] = String.valueOf(InetAddress.getLocalHost());
+            System.out.println("Création d'un noeud avec comme adresse " + InetAddress.getLocalHost());
             this.processus.add(Runtime.getRuntime().exec(cmd));
         }
     }
