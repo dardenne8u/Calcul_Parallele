@@ -9,5 +9,5 @@ public interface ServiceDistributeur extends Remote {
 
     ServiceCalcul getNoeud() throws RemoteException;
 
-    void exitPrograms();
+    void exitPrograms() throws RemoteException;
 }

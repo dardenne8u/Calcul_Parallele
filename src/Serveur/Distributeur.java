@@ -18,21 +18,23 @@ public class Distributeur implements ServiceDistributeur{
     public Distributeur() throws IOException{
         this.noeuds = new ArrayList<>();
         this.processus = new ArrayList<>();
-        for(int j = 224; j<247; i++) {
-            String[] cmd = new String[2];
-            cmd[0] = "../lancerNoeud.sh";
+        for(int j = 224; j<247; j++) {
+            String[] cmd = new String[3];
+            cmd[0] = "./lancerNoeud.sh";
             cmd[1] = String.valueOf(j);
             cmd[2] = String.valueOf(InetAddress.getLocalHost());
-            System.out.println("Création d'un noeud avec comme adresse " + InetAddress.getLocalHost());
+            System.out.print("Création d'un noeud avec comme adresse 100.64.80." + j);
             this.processus.add(Runtime.getRuntime().exec(cmd));
+            System.out.println(", fait");
         }
+        System.out.println(this.noeuds);     
     }
 
     public void enregistrerNoeud(ServiceCalcul client) throws RemoteException {
         this.noeuds.add(client);
     }
 
-    public void exitPrograms(){
+    public void exitPrograms () throws RemoteException {
         for (Process process : processus) {
             process.destroy();
         }

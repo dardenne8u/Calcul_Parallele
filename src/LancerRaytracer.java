@@ -18,7 +18,7 @@ public class LancerRaytracer {
     public static void main(String args[]) {
 
         // Le fichier de description de la scène si pas fournie
-        String fichier_description = "src/simple.txt";
+        String fichier_description = "./simple.txt";
 
         // largeur et hauteur par défaut de l'image à reconstruire
         int largeur = 512, hauteur = 512;
@@ -78,7 +78,12 @@ public class LancerRaytracer {
         long duree = Duration.between(debut, fin).toMillis();
         System.out.println("Temps d'affichage de 'image : " + duree);
 
-        serviceDistributeur.exitPrograms();
+        try {
+            serviceDistributeur.exitPrograms();
+        } catch (RemoteException e) {
+            System.out.println("Erreur (registry)" + e.getMessage());
+            System.exit(1);
+        }
     }
 
 
