@@ -12,11 +12,11 @@ public class Serveur {
         int ipFin = 246;
 
         if(args.length > 0) {
-            port = Integer.parseInt(args[0]);
+            ipDebut = Integer.parseInt(args[0]);
             if(args.length > 1) {
-                ipDebut = Integer.parseInt(args[1]);
+                ipFin = Integer.parseInt(args[1]);
                 if(args.length > 2) {
-                    ipFin = Integer.parseInt(args[2]);
+                    port = Integer.parseInt(args[2]);
                 }
             }
         }
