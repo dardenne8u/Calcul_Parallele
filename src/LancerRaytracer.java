@@ -74,16 +74,16 @@ public class LancerRaytracer {
                 ).start();
             }
         }
-        Instant fin = Instant.now();
+        /**Instant fin = Instant.now();
         long duree = Duration.between(debut, fin).toMillis();
-        System.out.println("Temps d'affichage de 'image : " + duree);
+        System.out.println("Temps d'affichage de l'image : " + duree);
 
         try {
             serviceDistributeur.exitPrograms();
         } catch (RemoteException e) {
             System.out.println("Erreur (registry)" + e.getMessage());
             System.exit(1);
-        }
+        }*/
     }
 
 
