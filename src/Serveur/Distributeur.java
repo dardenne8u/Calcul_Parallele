@@ -15,11 +15,11 @@ public class Distributeur implements ServiceDistributeur{
 
     int i = 0;
 
-    public Distributeur(int ipDebut, int ipFin) throws IOException{
+    public Distributeur() throws IOException{
         this.noeuds = new ArrayList<>();
         this.processus = new ArrayList<>();
         System.out.println("Ip du serveur : "+InetAddress.getLocalHost());
-        for(int j = ipDebut; j<ipFin; j++) {
+        /**for(int j = ipDebut; j<ipFin; j++) {
             String[] cmd = new String[3];
             cmd[0] = "./lancerNoeud.sh";
             cmd[1] = String.valueOf(j);
@@ -28,7 +28,7 @@ public class Distributeur implements ServiceDistributeur{
             this.processus.add(Runtime.getRuntime().exec(cmd));
             System.out.println(", fait");
         }
-        System.out.println(this.noeuds);     
+        System.out.println(this.noeuds);*/
     }
 
     public void enregistrerNoeud(ServiceCalcul client) throws RemoteException {
