@@ -18,6 +18,7 @@ public class Distributeur implements ServiceDistributeur{
     public Distributeur(int ipDebut, int ipFin) throws IOException{
         this.noeuds = new ArrayList<>();
         this.processus = new ArrayList<>();
+        System.out.println("Ip du serveur : "+InetAddress.getLocalHost());
         for(int j = ipDebut; j<ipFin; j++) {
             String[] cmd = new String[3];
             cmd[0] = "./lancerNoeud.sh";
