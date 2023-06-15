@@ -15,10 +15,10 @@ public class Distributeur implements ServiceDistributeur{
 
     int i = 0;
 
-    public Distributeur() throws IOException{
+    public Distributeur(int ipDebut, int ipFin) throws IOException{
         this.noeuds = new ArrayList<>();
         this.processus = new ArrayList<>();
-        for(int j = 224; j<247; j++) {
+        for(int j = ipDebut; j<ipFin; j++) {
             String[] cmd = new String[3];
             cmd[0] = "./lancerNoeud.sh";
             cmd[1] = String.valueOf(j);

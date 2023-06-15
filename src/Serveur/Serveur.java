@@ -8,7 +8,18 @@ import java.rmi.server.UnicastRemoteObject;
 public class Serveur {
     public static void main(String[] args) {
         int port = 1099;
-        if(args.length > 0) port = Integer.parseInt(args[0]);
+        int ipDebut = 224;
+        int ipFin = 246;
+
+        if(args.length > 0) {
+            port = Integer.parseInt(args[0]);
+            if(args.length > 1) {
+                ipDebut = Integer.parseInt(args[1]);
+                if(args.length > 2) {
+                    ipFin = Integer.parseInt(args[2]);
+                }
+            }
+        }
 
         Registry registry = null;
         try {
@@ -20,7 +31,7 @@ public class Serveur {
 
         ServiceDistributeur distributeur = null;
         try {
-            distributeur = (ServiceDistributeur) UnicastRemoteObject.exportObject(new Distributeur(), 0);
+            distributeur = (ServiceDistributeur) UnicastRemoteObject.exportObject(new Distributeur(ipDebut, ipFin+1), 0);
         } catch (Exception e) {
             System.out.println("Erreur (exportObject): " + e.getMessage());
             System.exit(1);
