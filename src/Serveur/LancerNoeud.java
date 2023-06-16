@@ -10,7 +10,7 @@ import java.rmi.server.UnicastRemoteObject;
 public class LancerNoeud {
     public static void main(String[] args) {
 
-        String server = "localhost";
+        String server = "100.64.80.228";
         int port = 1099;
         String filename = "simple.txt";
         int largeur = 512, hauteur = 512;

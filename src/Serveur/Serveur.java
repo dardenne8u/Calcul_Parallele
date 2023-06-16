@@ -15,7 +15,7 @@ public class Serveur {
 
         Registry registry = null;
         try {
-            registry = LocateRegistry.getRegistry(port);
+            registry = LocateRegistry.createRegistry(port);
         } catch (Exception e) {
             System.out.println("Erreur (getRegistry): " + e.getMessage());
             System.exit(1);

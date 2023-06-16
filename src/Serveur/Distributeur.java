@@ -11,13 +11,11 @@ import java.util.List;
 public class Distributeur implements ServiceDistributeur{
 
     List<ServiceCalcul> noeuds;
-    List<Process> processus;
 
     int i = 0;
 
     public Distributeur() throws IOException{
         this.noeuds = new ArrayList<>();
-        this.processus = new ArrayList<>();
         System.out.println("Ip du serveur : "+InetAddress.getLocalHost());
         /**for(int j = ipDebut; j<ipFin; j++) {
             String[] cmd = new String[3];
@@ -36,9 +34,9 @@ public class Distributeur implements ServiceDistributeur{
     }
 
     public void exitPrograms () throws RemoteException {
-        for (Process process : processus) {
+        /**for (Process process : processus) {
             process.destroy();
-        }
+        }*/
     }
 
     public ServiceCalcul getNoeud() throws RemoteException {

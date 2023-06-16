@@ -21,6 +21,8 @@ public class LancerRaytracer {
         String fichier_description = "./simple.txt";
 
         // largeur et hauteur par défaut de l'image à reconstruire
+        String server = "localhost";
+        int port = 1099;
         int largeur = 512, hauteur = 512;
         int nbDivisions = 2;
 
@@ -30,14 +32,17 @@ public class LancerRaytracer {
                 hauteur = Integer.parseInt(args[1]);
                 if (args.length > 2) {
                     nbDivisions = Integer.parseInt(args[2]);
+                    if (args.length > 3) {
+                        server = args[3];
+                        if (args.length > 4) {
+                            port = Integer.parseInt(args[4]);
+                        }
+                    }
                 }
             } else {
                 System.out.println(aide);
             }
         }
-
-        String server = "localhost";
-        int port = 1099;
 
         Registry registry = null;
         try {
